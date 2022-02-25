@@ -75,19 +75,44 @@
                 padding: 15px 40px;
                 margin: 15px;
             }
-            
+            .top_p {
+                text-align: center;
+                margin: 30px 0 -15px 0;
+            }
+            .top_a {
+                color: white;
+                background-color: rgb(252,171,21);
+                padding: 10px 15px;
+                border-radius: 5px;
+            }
+            .top_a:hover {
+                color: rgb(252, 171, 21);
+                transition: 0.5s;
+                margin-left: 5px;
+                border: rgb(252, 171, 21) 1px solid;
+                background: white;
+            }
+            .yellow {
+                color: rgb(252, 171, 21);
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
         <div class="title">
             <h1> JS 나무소리 </h1>
         </div>
+        <p class=top_p> 이 페이지는 <span class="yellow"> 나무소리 유튜브 JS 강의 </span>를 정리한 페이지입니다. 
+            <a class='top_a' href='https://www.youtube.com/playlist?list=PLOSNUO27qFbug6LMeH5yNXfQqVqWlUARc'>나무소리 유튜브 바로가기</a>
+        </p>
+        
         <div class="contents">
+            
                 <script>
                     var courseTitle = [
                         '01강 자바스크립트 소개',
                         '02강 Data Types Operators',
-                        
+                        '03-1강 Functions',
                     ];
                     var i = 0;
                     while ( i < courseTitle.length ) {
