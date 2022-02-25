@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 3-3강 함수 활용 실습2  </title>
+        <style type='text/css'>
+            @import url('../css.css');
+        </style>
+        
+    </head>
+    <body>
+        <div class="topbar">
+            <h1>3-3강 함수 활용 실습2</h1>
+        </div>  
+        <div class="box">
+            <h3> 함수 실습 </h3>
+            <pre>
+js 파일을 mjs파일로 바꾸고 
+터미널에서 node --experimental-json-modules course/Calculator.mjs
+쳐주면 해당 명령이 나옴 
+            </pre>
+        </div>
+
+        <div class="box">
+            <h3> 계산기 만들기 코드 </h3>
+            <pre>
+import { question } from 'readline-sync';
+
+function showprompt() {
+    console.clear();
+    const firstNumber = question(' Enter first number : ');
+    const operation = question(' Enter operation : ');
+    const secondNumber = question(' Enter second number : ');
+
+    const validation = isNumber(firstNumber) && isOperation(operation) && isNumber(secondNumber) ;
+
+    if(validation) {
+        let result = calculate(parseInt(firstNumber), operation, parseInt(secondNumber));
+        console.log('답 : ' + result );
+    } else {
+        console.log('Invalid Input');
+    }
+}
+
+function isNumber( number ) {
+    return !isNaN(parseInt( number )) ;
+}
+
+function isOperation( operation ) {
+    let operations = '+-*/';
+    return operations.indexOf(operation) !== -1
+}
+
+function calculate (firstNumber, operation, secondNumber){
+    switch(operation) {
+        case '+' : return firstNumber + secondNumber ;
+        case '-' : return firstNumber - secondNumber ;
+        case '*' : return firstNumber * secondNumber ;
+        case '/' : return firstNumber / secondNumber ;
+    }
+}
+
+showprompt();
+            </pre>
+        </div>
+    </body>
+</html>
