@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.Home {
+    background-color: rgb(0,0,0,0.2);
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    
+}
+
+.Home:hover {
+    background-color: rgb(0,0,0,0.3);
+    transition: 0.5s;
+}
+
+.calculator {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 5px rgb(0,0,0,0.05);
+}
+
+.calculator>div:nth-child(1) {
+    height: 200px;
+    background-color: #f5f5f5;
+    border-radius: 15px 15px 0 0 ;
+    padding: 15px;
+}
+
+.calculator>div:nth-child(1) p {
+    display: flex;
+    justify-content: center;
+    height: 130px;
+}
+
+.calculator>div:nth-child(1) form{
+    display: flex;
+    justify-content: end;
+}
+
+.calculator>div:nth-child(1) form input{
+    background-color: rgb(0,0,0,0);
+    border: 0px solid rgb(0,0,0,0);
+    text-align: end;
+    font-size: 30px;
+    width: 200px;
+}
+
+.calculator>div:nth-child(2) form {
+    display: grid;
+    grid-template-columns: repeat(4, 65px);
+    grid-auto-rows: 65px;
+    grid-gap: 5px;
+}
+
+.calculator>div:nth-child(2) form input:not(.result) {
+    cursor: pointer;
+    font-size: 22px;
+    background-color: white;
+    border: 1px solid rgb(0,0,0,0.0);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.calculator>div:nth-child(2) form input:hover:not(.result) {
+    background-color: rgb(0,0,0,0.05);
+    transition: 0.5s;
+
+}
+
+.clear {
+    color: #ee6161;
+    grid-column: span 3;
+}
+
+.operator {
+    color: #58b4ff;
+}
+
+.result {
+    color: white;
+    background-color: #47c5ff;
+    margin: 5px;
+    border: 0px solid rgb(0,0,0,0);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    grid-column: span 2;
+}
+
+.result:hover {
+    background-color: #2ca9e2;
+    transition: 0.5s;
+}
