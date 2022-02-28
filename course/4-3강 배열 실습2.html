@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 4-3강 배열 실습2  </title>
+        <style type='text/css'>
+            @import url('../css/common.css');
+        </style>
+        
+    </head>
+    <body>
+        <div class="topbar">
+            <h1>4-3강 배열 실습2</h1>
+        </div>  
+        <div class="box">
+            <h3> 실습 전 기초 지식 </h3>
+            <pre>
+.map 함수
+배열의 모든 값들을 일정하게 변화시켜줄 때 사용한다.
+
+var numbers = [4,9,16,25,36];
+var result = numbers.map(Math.sqrt);
+console.log(result);
+
+result
+[ 2, 3, 4, 5, 6 ]
+
+숫자가 아니라 객체나 다른 걸 넣어도 맵함수 쓸 수 있음
+
+
+
+forEach 구문
+
+
+
+switch case 구문 
+            </pre>
+        </div>
+
+        <div class="box">
+            <h3> calculatorAssist.mjs </h3>
+            <pre>
+import { question } from 'readline-sync';
+import calculator from './calculator.mjs';
+
+function showprompt() {
+    while(true){
+        let inputData = question('Enter number or operation : ');
+
+        if(inputData !== '='){
+            calculator.appendData( inputData );
+            console.log(calculator.getInputDatasMessage());
+        } else {
+            console.log(calculator.getInputDatasMessage() + '=' + calculator.calculate());
+            break;
+        }
+    }
+}
+
+showprompt();
+            </pre>
+        </div>
+
+        <div class="box">
+            <h3> calculator.mjs </h3>
+            <pre>
+import validator from './validator.mjs';
+
+let inputDatas = [];
+
+function appendData( inputData ) {
+    inputDatas.push( inputData );
+}
+
+function getInputDatasMessage() {
+    let message = '';
+    inputDatas.map( value => message += value);
+    return message;
+}
+
+function calculate() {
+    let result = parseInt(inputDatas[0]);
+    let currentNumber = 0;
+    let currentOperation = '';
+    let prevOperation = '';
+
+    inputDatas.forEach( value => {
+        if(validator.isNumber(parseInt(value))){
+            currentNumber = parseInt(value);
+        } else if (validator.isOperation(value)){
+            currentOperation = value;
+        }
+
+        switch(prevOperation) {
+            case '+' :
+                result += currentNumber;
+                break;
+            case '-' :
+                result -= currentNumber;
+                break;
+            case '*' :
+                result *= currentNumber;
+                break;
+            case '/' :
+                result /= currentNumber;
+                break;
+            default :
+                break;
+        }
+        prevOperation = currentOperation ; 
+        currentOperation = '';
+    })
+    return result ;
+}
+
+export default {
+    appendData,
+    getInputDatasMessage,
+    calculate,
+}
+            </pre>
+        </div>
+
+        <div class="box">
+            <h3> validator.mjs </h3>
+            <pre>
+function isNumber( number ) {
+    return !isNaN(parseInt(number));
+}
+
+function isOperation( operation ) {
+    let operations = '+-*/=';
+    return operations.indexOf (operation) !== -1 ;
+}
+
+export default {
+    isNumber,
+    isOperation
+};  
+                
+            </pre>
+        </div>
+
+    </body>
+</html>
